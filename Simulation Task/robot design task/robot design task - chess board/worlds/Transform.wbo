@@ -1,0 +1,85 @@
+#VRML_OBJ R2021b utf8
+DEF Pole Transform {
+  children [
+    DEF pole Solid {
+      translation 0 0.32 0
+      children [
+        SliderJoint {
+          jointParameters JointParameters {
+            axis 0 1 0
+          }
+          device [
+            LinearMotor {
+              name "linear_motor"
+              maxPosition 0.5400000000000004
+            }
+            PositionSensor {
+              name "linear_sensor"
+            }
+          ]
+          endPoint DEF laser_box Solid {
+            translation 0 -0.25 0.03
+            children [
+              DEF laser_sensor DistanceSensor {
+                translation 0 0 0.028
+                rotation 0 1 0 -1.5707996938995747
+                children [
+                  Solid {
+                    rotation 0 0 1 1.571
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0 0 0
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry Cone {
+                          bottomRadius 0.005
+                          height 0.02
+                        }
+                      }
+                    ]
+                    name "cone"
+                  }
+                ]
+                name "lidar_sensor"
+                lookupTable [
+                  0.1 0 0
+                  5 1000 0
+                ]
+                type "laser"
+              }
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 1 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.014 0.015 0.06
+                }
+              }
+            ]
+            name "slider"
+          }
+        }
+        DEF pole_shape Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.6
+            radius 0.007
+          }
+        }
+      ]
+      name "pole_solid"
+      boundingObject USE pole_shape
+      physics Physics {
+        mass 0.1
+      }
+    }
+  ]
+}

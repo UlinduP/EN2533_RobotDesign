@@ -1,0 +1,288 @@
+#VRML_OBJ R2021b utf8
+DEF Robot Robot {
+  translation 3.30741 0.05 -3.39241
+  rotation 0 1 0 -1.5707853071795865
+  children [
+    DEF body Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.05 0.12
+      }
+    }
+    DEF right_front_HingeJoint HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.06 -0.015 0.07
+      }
+      device [
+        DEF right_front_wheel RotationalMotor {
+          name "right_front_wheel"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06364477578854015 -0.015071960086360355 0.06999664232706193
+        rotation 0.9999386576949578 -0.00780000859682202 -0.007863886640532176 1.5700869526810852
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0.333333 0.666667 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.03
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics Physics {
+        }
+      }
+    }
+    DEF right_back_HingeJoint HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.06 -0.015 0.07
+      }
+      device [
+        DEF right_back_wheel RotationalMotor {
+          name "right_back_wheel"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05635498765380946 -0.01507170359780671 0.07000288890759299
+        rotation 0.9999386576820244 -0.007800010885889571 -0.007863886014654653 1.570086737752932
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics Physics {
+        }
+      }
+    }
+    DEF left_front_HingeJoint HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.06 -0.015 -0.07
+      }
+      device [
+        DEF left_front_wheel RotationalMotor {
+          name "left_front_wheel"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06364819785371748 -0.01507991167898466 -0.07000250380473005
+        rotation 0.9999303747662378 -0.008321033319820913 -0.008366960280891657 1.570118620824953
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics Physics {
+        }
+      }
+    }
+    DEF left_back_HingeJoint HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.06 -0.015 -0.07
+      }
+      device [
+        DEF left_back_wheel RotationalMotor {
+          name "left_back_wheel"
+        }
+      ]
+      endPoint Solid {
+        translation -0.056351602746858125 -0.015079962287230596 -0.06999841260500617
+        rotation 0.9999303747682258 -0.008321017756920377 -0.008366975520733828 1.57011874247467
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics Physics {
+        }
+      }
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 -0.05
+      rotation 0 0 1 -1.57
+      children [
+        DEF ir_sensor Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 0.666667 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "ir_ext_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 -0.03
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 -0.01
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_middle_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 0.01
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_middle_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 0.03
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 0.05
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_ext_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 0 0.03
+      rotation 0.25881802111377505 -0.0002055350167670709 0.9659260787980136 3.14005
+      children [
+        USE ir_sensor
+      ]
+      name "sonar_front_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "sonar"
+      numberOfRays 100
+    }
+    DistanceSensor {
+      translation -0.1 0 -0.03
+      rotation 0.25881988713660137 -0.00020557891035335513 -0.9659255787895403 -3.140055307179586
+      children [
+        USE ir_sensor
+      ]
+      name "sonar_front_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "sonar"
+      numberOfRays 100
+    }
+    DistanceSensor {
+      translation 0 0 0.06
+      rotation 0 1 0 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "sonar_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "sonar"
+      numberOfRays 100
+    }
+    DistanceSensor {
+      translation 0 0 -0.06
+      rotation 0 1 0 1.57
+      children [
+        USE ir_sensor
+      ]
+      name "sonar_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "sonar"
+      numberOfRays 100
+    }
+    Solid {
+      translation 0 0.275 0
+      children [
+        DEF vertical_pole Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.02 0.5 0.02
+          }
+        }
+      ]
+      name "pole"
+      boundingObject USE vertical_pole
+      physics Physics {
+        density 100
+      }
+    }
+  ]
+  boundingObject USE body
+  physics Physics {
+    density 10000
+  }
+  controller "straightwall"
+}

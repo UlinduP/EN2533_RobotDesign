@@ -1,0 +1,66 @@
+#include <webots/Robot.hpp>
+#include <webots/DistanceSensor.hpp>
+#include <webots/Motor.hpp>
+
+#define TIME_STEP 64
+#define MAX_SPEED 5
+
+using namespace webots;
+
+int main(int argc, char **argv) {
+  Robot *robot = new Robot();
+  
+  const int numDS = 3;
+  DistanceSensor *ds[numDS];
+  const char *ds_names[numDS] = {"dis_front", "dis_right", "dis_left"};
+  double ds_val[numDS];
+  
+  for (int i = 0; i < numDS; i++) {
+    ds[i] = robot->getDistanceSensor(ds_names[i]);
+    ds[i]->enable(TIME_STEP);
+  }
+  
+  const int numWheels = 4;
+  Motor *wheels[numWheels];
+  const char *wheel_names[numWheels] = {"right_front_wheel", "left_front_wheel", "right_rear_wheel", "left_rear_wheel"};
+  for (int i = 0; i < numWheels; i++) {
+    wheels[i] = robot->getMotor(wheel_names[i]);
+    wheels[i]->setPosition(INFINITY);
+    wheels[i]->setVelocity(0.0);
+  }
+  
+  double last_error = 0, intg = 0, diff = 0, prop = 0;
+  double kp = 0.0001, ki = 0, kd = 0.005;
+  
+  double pid(double error) {
+    prop = error;
+    intg = error + intg;
+    diff = error - last_error;
+    double balance = kp * prop + kd * diff + ki * intg;
+    last_error = error;
+    return balance;
+  }
+  
+  void setSpeed(double base_speed, double balance) {
+    wheels[0]->setVelocity(base_speed - balance);
+    wheels[1]->setVelocity(base_speed + balance);
+    wheels[2]->setVelocity(base_speed - balance);
+    wheels[3]->setVelocity(base_speed + balance);
+  }
+  
+  while (robot->step(TIME_STEP) != -1) {
+    for (int i = 0; i < numDS; i++)
+      ds_val[i] = ds[i]->getValue();
+      
+    if (ds_val[0] == 1000 && ds_val[2] == 1000 && ds_val[1] < 1000) {  
+      double error = ds_val[1] - 950;
+      double rectify = pid(error);
+      setSpeed(MAX_SPEED, rectify);
+    }
+    if (ds_val[0] != 1000 && ds_val[1] < 1000 && ds_val[2] == 1000)
+      setSpeed(MAX_SPEED / 2, -MAX_SPEED);
+  }
+  
+  delete robot;
+  return 0;
+}

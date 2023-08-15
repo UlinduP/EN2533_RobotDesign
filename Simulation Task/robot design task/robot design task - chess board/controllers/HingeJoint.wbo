@@ -1,0 +1,96 @@
+#VRML_OBJ R2021b utf8
+DEF Pole HingeJoint {
+  jointParameters HingeJointParameters {
+    axis 0 1 0
+  }
+  device [
+    RotationalMotor {
+      name "p_motor"
+    }
+    PositionSensor {
+      name "p_sensor"
+    }
+  ]
+  endPoint Solid {
+    children [
+      DEF pole_tyre Solid {
+        translation 0 0.3 0
+        children [
+          DEF pole_cylinder Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.6
+              radius 0.007
+            }
+          }
+        ]
+        boundingObject USE pole_cylinder
+      }
+      DEF laser SliderJoint {
+        jointParameters JointParameters {
+          axis 0 1 0
+        }
+        device [
+          LinearMotor {
+            name "linear_m"
+            maxPosition 0.53
+          }
+        ]
+        endPoint DEF laser_box Solid {
+          translation 0 0.06 0.03
+          children [
+            DEF laser_sensor DistanceSensor {
+              translation 0 0 0.028
+              rotation 0 1 0 -1.5707996938995747
+              children [
+                Solid {
+                  rotation 0 0 1 1.571
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0 0 0
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Cone {
+                        bottomRadius 0.005
+                        height 0.02
+                      }
+                    }
+                  ]
+                  name "cone"
+                }
+              ]
+              name "laser_s"
+              lookupTable [
+                0.1 0 0
+                5 1000 0
+              ]
+              type "laser"
+            }
+            DEF laser_box Shape {
+              appearance PBRAppearance {
+                baseColor 1 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.014 0.015 0.06
+              }
+            }
+          ]
+          name "slider"
+          boundingObject USE laser_box
+        }
+      }
+    ]
+    name "pole_as_rotor"
+    physics Physics {
+      mass 0.1
+    }
+  }
+}

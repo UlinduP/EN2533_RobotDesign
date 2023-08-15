@@ -1,0 +1,54 @@
+#VRML_OBJ R2021b utf8
+DEF sliding SliderJoint {
+  jointParameters JointParameters {
+    position 0.09999980380046093
+    axis 0 1 0
+  }
+  device [
+    LinearMotor {
+      name "linear_motor"
+      maxPosition 0.6
+    }
+    PositionSensor {
+      name "linear_sensor"
+    }
+  ]
+  endPoint Solid {
+    translation 0 0.13999980380046093 0
+    children [
+      Lidar {
+        translation 0 0 -0.01
+        children [
+          DEF lidar Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.02 0.03
+            }
+          }
+        ]
+        name "lidar_sensor"
+        boundingObject USE lidar
+        physics Physics {
+        }
+      }
+      DEF sliding Shape {
+        appearance PBRAppearance {
+          baseColor 0 0 0
+          roughness 1
+          metalness 0
+        }
+        geometry Box {
+          size 0.02 0.02 0.02
+        }
+      }
+    ]
+    name "solid(2)"
+    boundingObject USE sliding
+    physics Physics {
+    }
+  }
+}

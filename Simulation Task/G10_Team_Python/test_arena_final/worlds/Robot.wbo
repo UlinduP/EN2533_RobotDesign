@@ -1,0 +1,674 @@
+#VRML_OBJ R2021b utf8
+DEF Robot Robot {
+  translation 0.6800852310074228 0.042076717217805065 -2.3394457277199847
+  rotation -0.0015585175268426918 -0.9999987818495859 8.557139062339181e-05 0.2362511374974007
+  children [
+    DEF body Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.05 0.16
+      }
+    }
+    DEF right_front_HingeJoint HingeJoint {
+      jointParameters HingeJointParameters {
+        position 356.7397512129868
+        axis 0 0 1
+        anchor 0.06 -0.015 0.08
+      }
+      device [
+        DEF right_front_wheel RotationalMotor {
+          name "right_front_wheel"
+        }
+        PositionSensor {
+          name "right_front_wheel_pos_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06040208516878955 -0.018675530900025127 0.08
+        rotation -0.6226383061030184 0.5529782553011431 0.5536574653495313 4.256202659199932
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0.333333 0.666667 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.03
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics Physics {
+        }
+        linearVelocity -0.12162161051724948 0.00045168557800674333 -0.030014107748066697
+        angularVelocity -1.19710347658081 8.848897960953039e-05 4.864458083325975
+      }
+    }
+    DEF right_back_HingeJoint HingeJoint {
+      jointParameters HingeJointParameters {
+        position 356.7397447783274
+        axis 0 0 1
+        anchor -0.06 -0.015 0.08
+      }
+      device [
+        DEF right_back_wheel RotationalMotor {
+          name "right_back_wheel"
+        }
+        PositionSensor {
+          name "right_back_wheel_pos_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05957537272322126 -0.018639525619612452 0.08
+        rotation -0.6226357622142089 0.5529796103376086 0.5536589728007645 4.2561994108907975
+        children [
+          USE Wheel
+        ]
+        name "wheel(2)"
+        boundingObject USE Wheel
+        physics Physics {
+        }
+        linearVelocity -0.121722309399904 -0.0005239473666536232 -0.0298707307322344
+        angularVelocity -1.197109264617693 8.318128115170802e-05 4.86446048110883
+      }
+    }
+    DEF left_front_HingeJoint HingeJoint {
+      jointParameters HingeJointParameters {
+        position 369.5766179978447
+        axis 0 0 1
+        anchor 0.06 -0.015 -0.08
+      }
+      device [
+        DEF left_front_wheel RotationalMotor {
+          name "left_front_wheel"
+        }
+        PositionSensor {
+          name "left_front_wheel_pos_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06136051498938801 -0.018438382483617594 -0.08
+        rotation 0.7247946462969802 -0.4869509382987831 -0.4873925567642269 1.8862294025324808
+        children [
+          USE Wheel
+        ]
+        name "wheel(3)"
+        boundingObject USE Wheel
+        physics Physics {
+        }
+        linearVelocity -0.12147404003171976 0.000696339369319618 -0.029976631560827516
+        angularVelocity -1.197089629875446 0.00014348160089785393 4.864452785700234
+      }
+    }
+    DEF left_back_HingeJoint HingeJoint {
+      jointParameters HingeJointParameters {
+        position 369.5766223553186
+        axis 0 0 1
+        anchor -0.06 -0.015 -0.08
+      }
+      device [
+        DEF left_back_wheel RotationalMotor {
+          name "left_back_wheel"
+        }
+        PositionSensor {
+          name "left_back_wheel_pos_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05866022909685191 -0.018397748103829617 -0.08
+        rotation 0.7247962873048088 -0.4869497602088999 -0.48739129346107496 1.8862273067583173
+        children [
+          USE Wheel
+        ]
+        name "wheel(4)"
+        boundingObject USE Wheel
+        physics Physics {
+        }
+        linearVelocity -0.12162765922748693 -0.00047711266852414584 -0.029848477258554877
+        angularVelocity -1.1970970990258603 0.00014056042980723534 4.864458019203089
+      }
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 -0.05
+      rotation 0 0 1 -1.57
+      children [
+        DEF ir_sensor Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 0.666667 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "ir_ext_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 -0.07
+      rotation 0 0 1 -1.57
+      children [
+        DEF ir_sensor Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 0.666667 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "ir_ext_ext_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 -0.03
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 -0.01
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_middle_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 0.01
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_middle_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 0.03
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 0.05
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_ext_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 -0.025 0.07
+      rotation 0 0 1 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "ir_ext_ext_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.1 0 0.03
+      rotation 0.25881802111377505 -0.0002055350167670709 0.9659260787980136 3.14005
+      children [
+        USE ir_sensor
+      ]
+      name "sonar_front_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "sonar"
+      numberOfRays 100
+    }
+    DistanceSensor {
+      translation -0.1 0 -0.03
+      rotation 0.25881988713660137 -0.00020557891035335513 -0.9659255787895403 -3.140055307179586
+      children [
+        USE ir_sensor
+      ]
+      name "sonar_front_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "sonar"
+      numberOfRays 100
+    }
+    DistanceSensor {
+      translation 0 0 0.06
+      rotation 0 1 0 -1.57
+      children [
+        USE ir_sensor
+      ]
+      name "sonar_left"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "sonar"
+      numberOfRays 100
+    }
+    DistanceSensor {
+      translation 0 0 -0.06
+      rotation 0 1 0 1.57
+      children [
+        USE ir_sensor
+      ]
+      name "sonar_right"
+      boundingObject USE ir_sensor
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "sonar"
+      numberOfRays 100
+    }
+    DEF Arm_hinge HingeJoint {
+      jointParameters HingeJointParameters {
+        position 3.160616844188868e-06
+        anchor 0.036 0.04 -0.075
+      }
+      device [
+        DEF Arm_pos PositionSensor {
+          name "Arm_pos"
+          resolution 0.01
+        }
+        DEF Arm_mot RotationalMotor {
+          name "Arm_mot"
+          maxVelocity 5
+          maxTorque 40
+        }
+      ]
+      endPoint Solid {
+        translation -0.030000000000002476 0.035000009984890584 -0.03499999875188794
+        rotation -1.2491056020226622e-07 -0.9999999999999846 1.248111301604175e-07 1.5700000000000214
+        children [
+          DEF Actuator SliderJoint {
+            jointParameters JointParameters {
+              position 1.161631282771438e-05
+            }
+            device [
+              PositionSensor {
+                name "actPos"
+              }
+              LinearMotor {
+                name "actMot"
+              }
+            ]
+            endPoint Solid {
+              translation 0.035 -0.0479994 0.060011616312827656
+              children [
+                DEF Act Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 1
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.015 0.015 0.07
+                  }
+                }
+              ]
+              name "solid(2)"
+              boundingObject USE Act
+              physics Physics {
+              }
+              linearVelocity -0.13960031175036278 -0.0013013425970466355 -0.03445071003235651
+              angularVelocity -0.026688554328948608 -0.00047765214240250414 0.0033733531067140113
+            }
+          }
+          DEF ArmPart1 Solid {
+            translation -0.005 -0.03 0.08
+            children [
+              DEF ArmPart1 Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.03 0.02 0.01
+                }
+              }
+            ]
+          }
+          DEF ArmPart2 Solid {
+            translation 0.075 -0.03 0.08
+            children [
+              DEF ArmPart2 Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.03 0.02 0.01
+                }
+              }
+            ]
+            name "solid(1)"
+          }
+          DEF BaseArm2 SliderJoint {
+            jointParameters JointParameters {
+              position -2.361943884263098e-06
+              axis 1 0 0
+            }
+            device [
+              PositionSensor {
+                name "basepos2"
+                resolution 0.001
+              }
+              LinearMotor {
+                name "base2Mot"
+                maxVelocity 2
+              }
+            ]
+            endPoint Solid {
+              translation -0.00800236194388427 -0.048 0.134
+              children [
+                DEF ArmBase Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.002 0.035 0.1
+                  }
+                }
+              ]
+              name "solid(5)"
+              boundingObject USE ArmBase
+              physics Physics {
+                density -1
+                mass 0.02
+              }
+              linearVelocity -0.1395716388933592 -0.003086915094506977 -0.03447953249538787
+              angularVelocity -0.026688554249928498 -0.0004776517383731061 0.0033733529444493963
+            }
+          }
+          DEF BaseArm1 SliderJoint {
+            jointParameters JointParameters {
+              position -2.3015431361835818e-06
+              axis 1 0 0
+            }
+            device [
+              PositionSensor {
+                name "basepos1"
+                resolution 0.001
+              }
+              LinearMotor {
+                name "base1Mot"
+                maxVelocity 2
+              }
+            ]
+            endPoint Solid {
+              translation 0.07799769845686383 -0.048 0.134
+              children [
+                DEF ArmBase Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.002 0.035 0.1
+                  }
+                }
+              ]
+              name "solid(4)"
+              boundingObject USE ArmBase
+              physics Physics {
+                density -1
+                mass 0.02
+              }
+              linearVelocity -0.13961138634365608 -0.0009226729725882066 -0.03449042009883601
+              angularVelocity -0.02668855438364812 -0.0004776524387780769 0.003373352927023244
+            }
+          }
+          Transform {
+            children [
+              DEF ARM Shape {
+                appearance Appearance {
+                  material Material {
+                    ambientIntensity 1
+                    diffuseColor 0.792157 0.819608 0.933333
+                    shininess 0.4
+                    specularColor 0.396078 0.409804 0.466667
+                  }
+                }
+                geometry IndexedFaceSet {
+                  coord Coordinate {
+                    point [
+                      0 -0.04 0.070035
+                      0 -0.04 0.085
+                      0 -0.015 0.08
+                      0 -0.015 0.085
+                      0 -0.01 0
+                      0 -0.01 0.070035
+                      0 0 0
+                      0 0 0.08
+                      0.01 -0.01 0.01
+                      0.01 -0.01 0.07
+                      0.01 0 0.01
+                      0.01 0 0.07
+                      0.06 -0.01 0.01
+                      0.06 -0.01 0.07
+                      0.06 0 0.01
+                      0.06 0 0.07
+                      0.07 -0.04 0.070035
+                      0.07 -0.04 0.085
+                      0.07 -0.015 0.08
+                      0.07 -0.015 0.085
+                      0.07 -0.01 0
+                      0.07 -0.01 0.070035
+                      0.07 0 0
+                      0.07 0 0.08
+                    ]
+                  }
+                  normal Normal {
+                    vector [
+                      -1 0 0
+                      0 -1 0
+                      0 0 -1
+                      0 0 1
+                      0 1 0
+                      1 0 0
+                    ]
+                  }
+                  coordIndex [
+                    12, 20, 13, -1, 13, 20, 21, -1, 13, 21, 9, -1, 9, 21, 5, -1, 9, 5, 8, -1, 8, 5, 4, -1, 8, 4, 12, -1, 12, 4, 20, -1, 6, 4, 7, -1, 7, 4, 5, -1, 7, 5, 2, -1, 2, 5, 0, -1, 2, 0, 3, -1, 3, 0, 1, -1, 20, 22, 21, -1, 21, 22, 23, -1, 21, 23, 16, -1, 16, 23, 18, -1, 16, 18, 17, -1, 17, 18, 19, -1, 15, 23, 14, -1, 14, 23, 22, -1, 14, 22, 10, -1, 10, 22, 6, -1, 10, 6, 11, -1, 11, 6, 7, -1, 11, 7, 15, -1, 15, 7, 23, -1, 23, 7, 18, -1, 18, 7, 2, -1, 22, 20, 6, -1, 6, 20, 4, -1, 11, 9, 10, -1, 10, 9, 8, -1, 10, 8, 14, -1, 14, 8, 12, -1, 14, 12, 15, -1, 15, 12, 13, -1, 15, 13, 11, -1, 11, 13, 9, -1, 16, 0, 21, -1, 21, 0, 5, -1, 16, 17, 0, -1, 0, 17, 1, -1, 3, 19, 2, -1, 2, 19, 18, -1, 17, 19, 1, -1, 1, 19, 3, -1
+                  ]
+                  normalIndex [
+                    1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0, -1, 5, 5, 5, -1, 5, 5, 5, -1, 5, 5, 5, -1, 5, 5, 5, -1, 5, 5, 5, -1, 5, 5, 5, -1, 4, 4, 4, -1, 4, 4, 4, -1, 4, 4, 4, -1, 4, 4, 4, -1, 4, 4, 4, -1, 4, 4, 4, -1, 4, 4, 4, -1, 4, 4, 4, -1, 3, 3, 3, -1, 3, 3, 3, -1, 2, 2, 2, -1, 2, 2, 2, -1, 5, 5, 5, -1, 5, 5, 5, -1, 3, 3, 3, -1, 3, 3, 3, -1, 0, 0, 0, -1, 0, 0, 0, -1, 2, 2, 2, -1, 2, 2, 2, -1, 2, 2, 2, -1, 2, 2, 2, -1, 1, 1, 1, -1, 1, 1, 1, -1, 4, 4, 4, -1, 4, 4, 4, -1, 3, 3, 3, -1, 3, 3, 3, -1
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE ARM
+        physics Physics {
+          density -1
+          mass 0.05
+        }
+        linearVelocity -0.13970802709182467 -0.0012998515807985055 -0.035303202807519536
+        angularVelocity -0.02668855438917892 -0.0004776521497347817 0.003373353302112834
+      }
+    }
+    DEF Pole HingeJoint {
+      jointParameters HingeJointParameters {
+        position 3.14159
+        axis 0 1 0
+      }
+      device [
+        RotationalMotor {
+          name "rotational_motor"
+        }
+        PositionSensor {
+          name "rotational_sensor"
+        }
+      ]
+      endPoint Solid {
+        rotation 0 1 0 3.14159
+        children [
+          DEF pole_tyre Solid {
+            translation 0 0.375 0
+            children [
+              DEF pole_cylinder Shape {
+                appearance PBRAppearance {
+                  baseColor 0 1 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.7
+                  radius 0.007
+                }
+              }
+            ]
+          }
+          DEF laser SliderJoint {
+            jointParameters JointParameters {
+              position 0.6
+              axis 0 1 0
+            }
+            device [
+              LinearMotor {
+                name "linear_motor"
+                maxPosition 0.6
+              }
+            ]
+            endPoint DEF laser_box Solid {
+              translation 0 0.7 0.03
+              children [
+                DEF laser_sensor DistanceSensor {
+                  translation 0 0 0.028
+                  rotation 0 1 0 -1.5707996938995747
+                  children [
+                    Solid {
+                      rotation 0 0 1 1.571
+                      children [
+                        Shape {
+                          appearance PBRAppearance {
+                            baseColor 0 0 0
+                            roughness 1
+                            metalness 0
+                          }
+                          geometry Cone {
+                            bottomRadius 0.005
+                            height 0.02
+                          }
+                        }
+                      ]
+                      name "cone"
+                    }
+                  ]
+                  name "laser_sensor"
+                  lookupTable [
+                    0 0 0
+                    5 1000 0
+                  ]
+                  type "laser"
+                }
+                DEF laser_box Shape {
+                  appearance PBRAppearance {
+                    baseColor 1 0 0
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.014 0.015 0.06
+                  }
+                }
+              ]
+              name "slider"
+            }
+          }
+        ]
+        name "pole_as_rotor"
+      }
+    }
+    DistanceSensor {
+      translation 0 0.56 0
+      rotation 0 1 0 3.14
+      children [
+        Solid {
+          translation -0.01 0.56 0
+          children [
+            USE ir_sensor
+          ]
+        }
+      ]
+      name "king_color_detector"
+      lookupTable [
+        0 0 0
+        1.5 1000 0
+      ]
+      type "infra-red"
+    }
+    Compass {
+    }
+  ]
+  name "robot(1)"
+  boundingObject USE body
+  physics Physics {
+    density 10000
+  }
+  recognitionColors [
+    0 0 0
+  ]
+  controller "final"
+  linearVelocity -0.13965467229517603 -0.00044546953758017177 -0.034755911537928966
+  angularVelocity -0.026688055238373882 -0.00047764596933716876 0.0033734794956714804
+}

@@ -1,0 +1,35 @@
+#VRML_OBJ R2021b utf8
+DEF vertical_pole HingeJoint {
+  jointParameters HingeJointParameters {
+    axis 0 1 0
+    anchor 0 0.025 0
+  }
+  device [
+    PositionSensor {
+      name "rotational_sensor"
+    }
+    RotationalMotor {
+      name "rotational_motor"
+    }
+  ]
+  endPoint Solid {
+    translation 0 0.27499998483249105 8.708475350877417e-05
+    rotation 0 1 0 0.0003483390386414077
+    children [
+      DEF pole Shape {
+        appearance PBRAppearance {
+          baseColor 0.666667 1 0
+          roughness 1
+          metalness 0
+        }
+        geometry Box {
+          size 0.02 0.5 0.02
+        }
+      }
+    ]
+    name "pole"
+    boundingObject USE pole
+    physics Physics {
+    }
+  }
+}

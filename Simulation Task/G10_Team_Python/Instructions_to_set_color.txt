@@ -1,0 +1,1 @@
+Change the variable named 'dotted_line_color' to 'red' or 'blue'. Compile the code after setting the value.
